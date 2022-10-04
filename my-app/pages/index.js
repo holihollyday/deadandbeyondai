@@ -17,7 +17,8 @@ export default function Home() {
         </h1>
 
         <p className={styles.description}>
-          An NFT collecton on Ethereum blockchain
+          An NFT collection on Ethereum blockchain<br><br>
+          Celebrating the Day of the Dead on NOV 2 & 3, 2022
         </p>
 
         <div className={styles.grid}>
