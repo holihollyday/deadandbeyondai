@@ -11,48 +11,70 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
+      <div className={styles.content}>
+            {/* navigation */}
+      <div className = {styles.nav}>
+          <button className ={styles.socialmediaBtn} type="button"> 
+              <a href="https://twitter.com/deadandbeyond/" target="_blank" rel="noreferrer">
+                  <img className = {styles.socialmediaTop}  src="./ele/twitter.png"  alt="twitter-logo" />
+                  <img className = {styles.socialmediaBottom}  src="./ele/twitter_litup.png"  alt="twitter-logo" />
+              </a>  
+          </button>
+          <button className ={styles.socialmediaBtn} type="button"> 
+              <a href="https://opensea.io/collection/deadandbeyondai/" target="_blank" rel="noreferrer">
+                  <img className = {styles.socialmediaTop}  src="./ele/etherscan.png"  alt="etherscan-logo" />
+                  <img className = {styles.socialmediaBottom}  src="./ele/etherscan_litup.png"  alt="etherscan-logo" />
+              </a>  
+          </button>
+          <button className ={styles.socialmediaBtn} type="button"> 
+              <a href="https://opensea.io/collection/deadandbeyondai/" target="_blank" rel="noreferrer">
+                  <img className = {styles.socialmediaTop}  src="./ele/opensea.png"  alt="opensesa-logo" />
+                  <img className = {styles.socialmediaBottom}  src="./ele/opensea_litup.png"  alt="opensesa-logo" />
+              </a>  
+          </button>
+       </div>
+
+
+      <main className={styles.main}>     
+
         <h1 className={styles.title}>
         Dead and Beyond AI
         </h1>
 
-        <p className={styles.description}>
-          An NFT collection on Ethereum blockchain<br><br>
-          Celebrating the Day of the Dead on NOV 2 & 3, 2022
+        <div className={styles.intro}>
+        <p>
+        An NFT collection on Ethereum blockchain<br></br><br></br>
+        Day of the dead is a way to honor lost pets brought back from the AI world.
+        Art is Ai generated, and the human aspect is part of taking control over the system.
+        We want to get the images back from the dead.
         </p>
+        <div className={styles.intro_mobile}>
+          <p>
+          1101 NFTs <br></br><br></br>
+          Pre Mint <br></br>
+          November 1 <br></br>
 
-        <div className={styles.grid}>
-          {/* <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
+          Public Mint <br></br>
+          November 2 <br></br>
+          </p>
+          <p>
+          Pre Mint <br></br>
+          1 de noviembre <br></br>
 
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a> */}
+          Público Mint <br></br>
+          2 de noviembre <br></br>
+          </p>
         </div>
+        </div>
+        <button className ={styles.socialmediaBtn} type="button"> 
+              <a href="https://opensea.io/collection/deadandbeyondai/" target="_blank" rel="noreferrer">
+                  <img className = {styles.socialmediaTop}  src="./ele/Mint.png"  alt="mint-button" />
+                  <img className = {styles.socialmediaBottom}  src="./ele/Mint_litup.png"  alt="mint-button" />
+              </a>  
+          </button>
       </main>
 
-      <footer className={styles.footer}>
+      {/* <footer className={styles.footer}>
         <a
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
           target="_blank"
@@ -60,7 +82,9 @@ export default function Home() {
         >
           Powered by The Dead AI
         </a>
-      </footer>
+      </footer> */}
+    </div>
+
     </div>
   )
 }

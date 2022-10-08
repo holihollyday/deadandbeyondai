@@ -1,18 +1,46 @@
+
+@font-face {
+  font-family: "Mason";
+  src: url('../fonts/Mason.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+  color: white;
+  font-family: Mason,-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  }
+
+h1{
+  font-size:48px;
+  text-shadow: 0px 0px 25px #ffffff, 0px 0px 25px #ffffff, 0px 0px 25px #ffffff;
+  margin-bottom:0;
+}
+
+p{
+  font-size:23px;
 }
 
 a {
   color: inherit;
   text-decoration: none;
+  padding:0px 0px;
 }
 
 * {
   box-sizing: border-box;
+}
+
+@media (max-width: 1000px) {
+  h1{
+    font-size:2.8rem;
+    margin-bottom:15vh;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
