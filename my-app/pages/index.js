@@ -43,9 +43,8 @@ export default function Home() {
 
         <div className={styles.intro}>
         <p>
-        An NFT collection on Ethereum blockchain<br></br><br></br>
-        Day of the dead is a way to honor lost pets brought back from the AI world.
-        Art is Ai generated, and the human aspect is part of taking control over the system.
+        Launching on the Day of the Dead, the Dead and Beyond AI collection is a way to honor lost pets who have left us over the years. <br></br><br></br>
+        The art is AI generated, but we humans are the ones who have have taken control over the AI system to find our pets!
         We want to get the images back from the dead.
         </p>
         <div className={styles.intro_mobile}>
