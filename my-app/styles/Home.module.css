@@ -9,7 +9,7 @@
   display: flex;
   align-items: flex-start;
   flex-direction: column;
-  padding:2rem 4rem;
+  padding:0rem 4rem;
   gap:1rem;
 }
 
@@ -37,7 +37,7 @@
 }
 
 .socialmediaBtn:hover .socialmediaBottom{
-  display:inline-block;
+   display:inline-block;
    /* Start the shake animation and make the animation last for 0.5 seconds */
    animation: shake 0.5s;
 
@@ -61,7 +61,6 @@
 
 .main {
   min-height: 100vh;
-  padding: 4rem 0;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -70,7 +69,10 @@
 }
 
 .intro{
-  max-width: 28vw;
+  width: 480px;
+  height: 300px;
+  margin-top: 0px;
+  position: relative;
   text-align: center;
 }
 
@@ -78,11 +80,49 @@
   display: none;
 }
 
+
+.english{
+  position: absolute;
+  width: 480px;
+  height: 150px;
+  animation: fadeIn 30s;
+  animation-iteration-count: infinite; 
+}
+
+.spanish{
+  position: absolute;
+  width: 480px;
+  height: 150px;
+  top: -4px;
+  left: 0px;
+  animation: fadeOut 30s;
+  animation-iteration-count: infinite; 
+}
+
+.mintBtn{
+  /* display: flex;
+  flex: 1; */
+}
+@keyframes fadeIn{
+  0% { opacity: 0; }
+  25% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+@keyframes fadeOut{
+  0% { opacity: 0; }
+  50% { opacity: 0; }
+  75% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+
 .footer {
   display: flex;
   flex: 1;
   padding: 2rem 0;
-  border-top: 1px solid #eaeaea;
+  /* border-top: 1px solid #eaeaea; */
   justify-content: center;
   align-items: center;
 }
@@ -102,7 +142,7 @@
 @media (max-width: 1000px) {
   .content{
     background-image: url(/ele/bg_mobile.png);
-    background-position:fixed; 
+    background-size:cover;
   }
 
   .nav{
@@ -110,14 +150,36 @@
     padding:4rem 4rem;
   }
 
+
   .intro{
-    max-width: 80vw;
+    width: 300px;
+    height: 700px;
+    margin-top: 20px;
+    position: relative;
+    text-align: center;
+  }
+
+  .english{
+    position: absolute;
+    width: 300px;
+    height: 150px;
+  }
+  
+  .spanish{
+    position: absolute;
+    width: 300px;
+    height: 150px;
+    top: -4px;
+    left: 0px;
   }
 
   .intro_mobile{
     display: block;
-    margin-top: 20vw;
-    margin-bottom: 20vw;
+    position: relative;
+    width: 300px;
+    height: 150px;
+    top: 400px;
+    left: 0px;
   }
   
 }
