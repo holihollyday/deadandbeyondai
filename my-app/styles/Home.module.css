@@ -1,16 +1,39 @@
-.content{
+.container{
+  width:100%;
   background-image: url(/ele/bg.png);
   background-repeat: no-repeat;
-  background-position: top center; 
-  background-size: cover; 
+  background-size: 100% auto;
+  overflow: hidden;
 }
 
 .nav{
   display: flex;
   align-items: flex-start;
+  flex-direction: row;
+  padding:3rem 2rem 0 2rem;
+}
+
+.navLeft{
+  width: 50%;
+  height: 60vh;
+  /* background-color: green; */
+  text-align: center;
+  color: white;
+  display: flex;
+  align-items: flex-start;
   flex-direction: column;
-  padding:0rem 4rem;
-  gap:1rem;
+  gap:2rem;
+}
+.navRight{
+  width: 50%;
+  height: 20vh;
+  right:0%;
+  /* background-color: rgb(128, 0, 111); */
+  text-align:start;
+  color: white;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
 }
 
 .socialmediaBtn{
@@ -45,6 +68,7 @@
    animation-iteration-count: infinite; 
 }
 
+
 @keyframes shake {
   0% { transform: translate(1px, 1px) rotate(0deg); }
   10% { transform: translate(-1px, -2px) rotate(-1deg); }
@@ -59,21 +83,77 @@
   100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
 
+/* COUNTDOWN FEATURE starts*/
+.countdown{
+  background-repeat: no-repeat;
+  background-position: top center; 
+  background-size: fixed; 
+  position: absolute;
+  width:1000px;
+  top: 130px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.countdown h2{
+  font-size:1.5rem;
+  text-align: center;
+  padding:0;
+  margin:-40px;
+}
+
+.countdownContainer{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+}
+.countdownTime{
+  background-image: url(/ele/countdown.png);
+  width:160px;
+  height:163px;
+  background-position: top center; 
+  padding:20px;
+  margin:0 60px 0 60px;
+}
+.time{
+  font-size:6rem;
+}
+.label{
+  font-size:2.5rem;
+  margin:-3px;
+}
+.countdownTime br {
+  display: block;
+  margin: -10px 0;
+}
+/* COUNTDOWN FEATURE ends*/
+
+
 .main {
-  min-height: 100vh;
-  flex: 1;
+  /* min-height: 40vh; */
+  /* flex: 1; */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  /* background-color: green; */
+  gap:0rem;
+  line-height: 1;
 }
 
+.title{
+  margin:0px;
+  display: block;
+}
 .intro{
-  width: 480px;
-  height: 300px;
+  width: 460px;
+  height: 190px;
   margin-top: 0px;
   position: relative;
   text-align: center;
+  text-shadow: 5px 0px 25px #000000, 5px 0px 25px #000000, 5px 25px 25px #000000;
+
 }
 
 .intro_mobile{
@@ -83,7 +163,7 @@
 
 .english{
   position: absolute;
-  width: 480px;
+  width: 460px;
   height: 150px;
   animation: fadeIn 30s;
   animation-iteration-count: infinite; 
@@ -91,7 +171,7 @@
 
 .spanish{
   position: absolute;
-  width: 480px;
+  width: 460px;
   height: 150px;
   top: -4px;
   left: 0px;
@@ -100,8 +180,7 @@
 }
 
 .mintBtn{
-  /* display: flex;
-  flex: 1; */
+  padding:10px;
 }
 @keyframes fadeIn{
   0% { opacity: 0; }
@@ -120,37 +199,91 @@
 
 .footer {
   display: flex;
-  flex: 1;
-  padding: 2rem 0;
-  /* border-top: 1px solid #eaeaea; */
+  height: 40px;
+  width:auto;
+  padding: 0rem 0;
   justify-content: center;
   align-items: center;
+  text-align: center;
+  /* background-color: rgb(8, 8, 8); */
 }
 
 .footer a {
-  display: flex;
+  width:500px;
   justify-content: center;
-  align-items: center;
-  flex-grow: 1;
+  color:rgb(240, 240, 240);
 }
 
-.logo {
-  height: 1em;
-  margin-left: 0.5rem;
+.footerImgLeft{
+  transform: translate(-20%, -40%);
 }
+.footerImgRight{
+  transform: translate(20%, -40%);
+}
+
 
 @media (max-width: 1000px) {
   .content{
     background-image: url(/ele/bg_mobile.png);
     background-size:cover;
+    /* background-size: 100% auto; */
+    overflow: hidden;
   }
-
+  
   .nav{
+    display: flex;
+    align-items: flex-start;
     flex-direction: row;
-    padding:4rem 4rem;
+    padding:3rem 2rem 0 2rem;
   }
 
+  .navLeft{
+    width: 80%;
+    height: 100vw;
+    flex-direction: row;
+    gap:0.3rem;
+  }
+  .navRight{
+    width: 20%;
+    height: 100vw;
+  }
 
+  .socialmediaTop{
+    width:100%;
+  }
+  
+  .socialmediaBottom{
+    width:100%;
+  }
+
+  @keyframes shake {
+    0% { transform: translate(0.5px, 0.5px) rotate(0deg); }
+    10% { transform: translate(-0.5px, -1px) rotate(-1deg); }
+    20% { transform: translate(-1.5px, 0px) rotate(1deg); }
+    30% { transform: translate(1.5px, 1px) rotate(0deg); }
+    40% { transform: translate(0.5px, -0.5px) rotate(1deg); }
+    50% { transform: translate(-0.5px, 1px) rotate(-1deg); }
+    60% { transform: translate(-1.5px, 0.5px) rotate(0deg); }
+    70% { transform: translate(1.5px, 0.5px) rotate(-1deg); }
+    80% { transform: translate(-0.5px, -0.5px) rotate(1deg); }
+    90% { transform: translate(0.5px, 1px) rotate(0deg); }
+    100% { transform: translate(0.5px, -1px) rotate(-1deg); }
+  }
+
+  .countdown{
+    background-repeat: no-repeat;
+    background-position: top center; 
+    background-size: fixed; 
+    position: absolute;
+    width:100vw;
+    top: 100vw;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .title{
+    display: none;
+  }
   .intro{
     width: 300px;
     height: 700px;
@@ -180,6 +313,15 @@
     height: 150px;
     top: 400px;
     left: 0px;
+  }
+  .footer{
+    text-align: center;
+  }
+  .footerImgLeft{
+    display:none;
+  }
+  .footerImgRight{
+    display:none;
   }
   
 }
