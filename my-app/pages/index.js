@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import { useEffect, useState } from 'react';
+import Popup from 'reactjs-popup';
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
@@ -99,12 +100,21 @@ export default function Home() {
                 {renderCountdown()}
             </div>
             <div className ={styles.navRight}>
-              <button className ={styles.socialmediaBtn} type="button"> 
-                  <a href="https://opensea.io/collection/deadandbeyondai/" target="_blank" rel="noreferrer">
-                      <img className = {styles.socialmediaTop}  src="./ele/question.png"  alt="question-logo" />
-                      <img className = {styles.socialmediaBottom}  src="./ele/question_litup.png"  alt="question-logo" />
-                  </a>  
-              </button>
+             <Popup trigger={  <button className ={styles.socialmediaBtn} type="button"> 
+                    {/* <a href="https://opensea.io/collection/deadandbeyondai/" target="_blank" rel="noreferrer"> */}
+                    <a>
+                        <img className = {styles.socialmediaTop}  src="./ele/question.png"  alt="question-logo" />
+                        <img className = {styles.socialmediaBottom}  src="./ele/question_litup.png"  alt="question-logo" />
+                    </a>  
+                </button> } >
+                <div  className ={styles.instruction}>
+                  <h2>How to Mint?</h2>
+                  <p>1. Download a Metamask wallet</p>
+                  <p>2. Deposit ETH</p>
+                  <p>3. Click Mint Button</p>
+                  <span>Contact us on Twitter<a href="https://twitter.com/deadandbeyond/" target="_blank" rel="noreferrer"> @deadandbeyond</a> if you meet any issues.</span>
+                </div>
+              </Popup>
             </div>
         </div>
 
@@ -161,15 +171,13 @@ export default function Home() {
 
       {/* FOOTER */}
         <div className={styles.footer}>
-          <img className = {styles.footerImgLeft}  src="./ele/Candle_1.png"  alt="img" />
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Powered by The Dead AI
-          </a>
-          <img className = {styles.footerImgRight}  src="./ele/Candle_2.png"  alt="img" />
+          <img className = {styles.footerImgLeft}  src="./ele/candle_l.gif"  alt="img" />
+          <div className={styles.footerText}>
+            <a>
+              Powered by Dead AI
+            </a>
+          </div>
+          <img className = {styles.footerImgRight}  src="./ele/candle_r.gif"  alt="img" />
 
         </div>
    

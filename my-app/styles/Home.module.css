@@ -83,6 +83,14 @@
   100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
 
+.instruction{
+  position:absolute;
+  /* transform: translate(-50%, -50%); */
+  right:50%;
+  background-color: black;
+  padding:20px;
+  width:600px;
+}
 /* COUNTDOWN FEATURE starts*/
 .countdown{
   background-repeat: no-repeat;
@@ -199,26 +207,30 @@
 
 .footer {
   display: flex;
-  height: 40px;
+  height: 120px;
   width:auto;
   padding: 0rem 0;
   justify-content: center;
-  align-items: center;
+  align-items:center;
   text-align: center;
   /* background-color: rgb(8, 8, 8); */
 }
 
-.footer a {
-  width:500px;
+.footerText{
+  flex: 1 0 auto;
   justify-content: center;
-  color:rgb(240, 240, 240);
+  color:rgb(215, 215, 215);
+  /* top:200px; */
+  padding:0;
 }
 
 .footerImgLeft{
-  transform: translate(-20%, -40%);
+  flex: 0 0 auto;
+  transform: translate(-0%, -10%);
 }
 .footerImgRight{
-  transform: translate(20%, -40%);
+  flex: 0 0 auto;
+  transform: translate(0%, -10%);
 }
 
 
