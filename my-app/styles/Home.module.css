@@ -226,11 +226,11 @@
 
 .footerImgLeft{
   flex: 0 0 auto;
-  transform: translate(-0%, -10%);
+  transform: translate(-0%, -2%);
 }
 .footerImgRight{
   flex: 0 0 auto;
-  transform: translate(0%, -10%);
+  transform: translate(0%, -2%);
 }
 
 
