@@ -89,7 +89,10 @@
   right:50%;
   background-color: black;
   padding:20px;
-  width:600px;
+  width:300px;
+}
+.instruction a{
+  color:aqua;
 }
 /* COUNTDOWN FEATURE starts*/
 .countdown{
@@ -204,6 +207,27 @@
   100% { opacity: 0; }
 }
 
+.walletInfo{
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.walletInfo h2{
+  font-size:30px;
+  animation: shine 10s infinite;
+  text-shadow: 5px 0px 15px #ffffff, 5px 0px 15px #ffffff, 5px 0px 15px #ffffff;
+  padding:0px;
+  margin-top:40px;
+  margin-bottom:0px;
+}
+@keyframes shine {
+  50% {  text-shadow: 0px 300px 60px #929292, 0px 200px 60px #787878, 0px 100px 60px #707070;}
+}
+
+.walletInfo p{
+  color:rgb(188, 186, 186);
+  font-size:1rem;
+}
 
 .footer {
   display: flex;
@@ -299,6 +323,13 @@
   .intro{
     width: 300px;
     height: 700px;
+    margin-top: 20px;
+    position: relative;
+    text-align: center;
+  }
+  .intro_short{
+    width: 300px;
+    height: 160px;
     margin-top: 20px;
     position: relative;
     text-align: center;

@@ -44,7 +44,7 @@ export default function Home() {
     try {
       const provider = await getProviderOrSigner();
       const nftContract = new Contract(NFT_CONTRACT_ADDRESS, abi, provider);
-      const presaleStarted = await nftContract.isPresaleActive();
+      const presaleStarted = await nftContract.earlyOfferStarted();
       console.log("Has Presale started? --", presaleStarted);
       //preslaeMintedStarted = false then do the following
       if (!presaleStarted){
@@ -65,8 +65,8 @@ export default function Home() {
     try {
       const provider = await getProviderOrSigner();
       const nftContract = new Contract(NFT_CONTRACT_ADDRESS, abi, provider);
-      const presaleEnded = await nftContract.isPublicSaleActive();
-      console.log("Has Public sale started? --", presaleEnded);
+      const presaleEnded = await nftContract.earlyOfferEnded();
+      console.log("Has Presale ended? --", presaleEnded);
       //presaleEnded = true then do the following
       if (presaleEnded){
         console.log("Public Sale Started");
@@ -89,33 +89,35 @@ export default function Home() {
 
       const signer = await getProviderOrSigner(true);
       const nftContract = new Contract(NFT_CONTRACT_ADDRESS, abi, signer);
-   
-        //get address
-        const signerAddress = await signer.getAddress();
-        //console.log("providerAddress:", signerAddress, typeof signerAddress);
 
-        // //build a tree
-        // const leafNodes = addressList.map(addr => keccak256(addr))
-        // const merkleTree = new MerkleTree(leafNodes, keccak256, { sortPairs: true});
-        // setMerkleTree(merkleTree);
+      //get address
+      const signerAddress = await signer.getAddress();
+      //console.log("providerAddress:", signerAddress, typeof signerAddress);
 
-        // //get the tree root
-        // const rootHash = '0x' + merkleTree.getRoot().toString('hex');
-        // setrootHash(rootHash);
+        //build a tree
+        const leafNodes = addressList.map(addr => keccak256(addr))
+        const merkleTree = new MerkleTree(leafNodes, keccak256, { sortPairs: true});
+        setMerkleTree(merkleTree);
 
-        // //get claimingAddress object
-        // const claimingAddress= keccak256(signerAddress);
-        // //console.log("claimingAddress", claimingAddress, typeof claimingAddress);
+        //get the tree root
+        const rootHash = '0x' + merkleTree.getRoot().toString('hex');
+        setrootHash(rootHash);
+
+        //get claimingAddress object
+        const claimingAddress= keccak256(signerAddress);
+        //console.log("claimingAddress", claimingAddress, typeof claimingAddress);
         
-        // //get merkle proof for the claiming address
-        // const merkleProof =  merkleTree.getHexProof(claimingAddress);
-        // setmerkleProof(merkleProof);
+        //get merkle proof for the claiming address
+        const merkleProof =  merkleTree.getHexProof(claimingAddress);
+        setmerkleProof(merkleProof);
+      //console.log("merkleProof:",merkleProof, typeof merkleProof);
+      
+      //Edit format 
+      //const proofAddress = merkleProof.toString().replaceAll('\'', '').replaceAll(' ', '');
+      // console.log("ProofAddress:",  proofAddress, typeof proofAddress);
 
-
-        const isValid = await nftContract.verifySignerAddress(messageHash,signature);
-        
-        // const isValid = merkleTree.verify(merkleProof, claimingAddress, rootHash);
-        setisValid(isValid);
+      const isValid = merkleTree.verify(merkleProof, claimingAddress, rootHash);
+      setisValid(isValid);
 
       console.log("Is this human on the allowlist? --", isValid);
       return isValid, merkleProof;
@@ -181,7 +183,7 @@ const presaleMint = async () => {
     const nftContract = new Contract(NFT_CONTRACT_ADDRESS, abi, signer);
  
     // call the presale from the contract and pass true to it
-    const tx = await nftContract.presaleMint(merkleProof, {
+    const tx = await nftContract.allowlistMint(merkleProof, {
       value: utils.parseEther("0.01"),
     });
     _safeMint(msg.sender, tokenIds);
@@ -203,7 +205,7 @@ const publicMint = async () => {
     console.log("Public mint");
     const signer = await getProviderOrSigner(true);
     const nftContract = new Contract(NFT_CONTRACT_ADDRESS, abi, signer);
-    const tx = await nftContract.mint(1,{
+    const tx = await nftContract.wakeDead({
       value: utils.parseEther("0.02"),
     });
 
@@ -306,7 +308,7 @@ const publicMint = async () => {
 
   useEffect(() =>{
     //Check if the user has connect the wallet
-        if(isConnected){
+    if(isConnected){
       const presaleStarted = checkIfPresaleStarted();
       if (presaleStarted) {
         checkIfPresaleEnded();
@@ -320,7 +322,6 @@ const publicMint = async () => {
 
       // set an interval to get the number of token Ids minted every 3 seconds
         setInterval(async function () {
-          await checkIfPresaleStarted();
           await getTokenIdsMinted();
           await checkifClaimed();
           await checkifSoldOut();
@@ -555,12 +556,6 @@ const publicMint = async () => {
         {/* META TAGS */}
         <meta content="An AI generated NFT collection to be launched on the Day of the Dead 2022 for lost pets." name="description"></meta>
         <meta property="og:url" content="https://deadandbeyondai.com"></meta>
-        <script
-              defer
-              src="https://launchpad.heymint.xyz/api/embed.js"
-              data-project-id="53"
-              data-chain="ETH_GOERLI"
-              ></script>
       </Head>
 
       <div className={styles.content}>
@@ -574,7 +569,7 @@ const publicMint = async () => {
                       <img className = {styles.socialmediaBottom}  src="./ele/twitter_litup.png"  alt="twitter-logo" />
                   </a>  
               </button>
-              {/* <button className ={styles.socialmediaBtn} type="button"> 
+              <button className ={styles.socialmediaBtn} type="button"> 
                   <a href="https://opensea.io/collection/deadandbeyondai/" target="_blank" rel="noreferrer">
                       <img className = {styles.socialmediaTop}  src="./ele/Discord.png"  alt="discord-logo" />
                       <img className = {styles.socialmediaBottom}  src="./ele/Discord_litup.png"  alt="discord-logo" />
@@ -591,7 +586,7 @@ const publicMint = async () => {
                       <img className = {styles.socialmediaTop}  src="./ele/opensea.png"  alt="opensesa-logo" />
                       <img className = {styles.socialmediaBottom}  src="./ele/opensea_litup.png"  alt="opensesa-logo" />
                   </a>  
-              </button> */}
+              </button>
             </div>
             <div className={styles.countdown}>
                 <h2>Release Countdown</h2>
@@ -622,12 +617,7 @@ const publicMint = async () => {
           {renderScreen()}
 
           <div className={styles.mintBtn}>
-             {/* {renderButton()} */}
-             <button className ={styles.socialmediaBtn} type="button"> 
-                  <a href="https://twitter.com/deadandbeyond/" target="_blank" rel="noreferrer">
-                      <img className = {styles.socialmediaTop}  src="./ele/NotYet.png"  alt="logo" />
-                  </a>  
-              </button>
+             {renderButton()}
           </div>
 
       </main>
