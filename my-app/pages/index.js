@@ -7,9 +7,6 @@ import { ConnectButton, useAccount } from "@web3modal/react";
 import { Contract, ethers, providers, utils} from "ethers";
 
 import { abi, NFT_CONTRACT_ADDRESS, poem_abi, POEM_CONTRACT_ADDRESS} from "../constants";
-import { addressList } from "../address";
-import keccak256 from "keccak256";
-import MerkleTree from "merkletreejs";
 
 export default function Home() {
 
@@ -28,16 +25,12 @@ export default function Home() {
   const [soldOut, setSoldOut] = useState(false);
 
   //CHECK ALLOWLIST
-  const [merkleTree, setMerkleTree] = useState(null);
-  const [rootHash, setrootHash] = useState(null);
-  const [merkleProof, setmerkleProof] = useState("");
   const [messageHash, setHash] = useState(null); 
   const [signature, setSignature] = useState(null); 
   //CHECK IF VALID/CLAIMED
   const [isValid, setisValid] = useState(false);
   const [isClaimed, setisClaimed] = useState(false);
 
-  const api ="https://launchpad.heymint.xyz/api/embed?projectId=53&chain=ETH_GOERLI&address=0xF546F5aE11913d66A0669aAA7C237AC9ADA76e0C";
    /**
    * checkifValid: Check if presale has started
    */
@@ -100,19 +93,7 @@ export default function Home() {
         }
       )
         .catch(error => console.log('ERROR'));
-        // .then((response) => response.json())
-        // .then((data) => data.allowlist.messageHash, data.allowlist.signature);
-
-        // const res = await fetch("https://launchpad.heymint.xyz/api/embed?projectId=53&chain=ETH_GOERLI&address="+signerAddress);
-        // console.log(res.json().allowlist.messageHash);
-        // const messageHash = res.json().allowlist.messageHash;
-        // const signature = res.allowlist.signature;
-
-
-        
-        return messageHash, signature;
-        
-
+        return messageHash, signature
     }
     catch (err) {
       console.error(err);
@@ -133,24 +114,6 @@ export default function Home() {
         //get address
         const signerAddress = await signer.getAddress();
         //console.log("providerAddress:", signerAddress, typeof signerAddress);
-
-        // //build a tree
-        // const leafNodes = addressList.map(addr => keccak256(addr))
-        // const merkleTree = new MerkleTree(leafNodes, keccak256, { sortPairs: true});
-        // setMerkleTree(merkleTree);
-
-        // //get the tree root
-        // const rootHash = '0x' + merkleTree.getRoot().toString('hex');
-        // setrootHash(rootHash);
-
-        // //get claimingAddress object
-        // const claimingAddress= keccak256(signerAddress);
-        // //console.log("claimingAddress", claimingAddress, typeof claimingAddress);
-        
-        // //get merkle proof for the claiming address
-        // const merkleProof =  merkleTree.getHexProof(claimingAddress);
-        // setmerkleProof(merkleProof);
-
 
         const isValid = await nftContract.verifySignerAddress(messageHash,signature);
 
