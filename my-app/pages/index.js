@@ -11,7 +11,6 @@ import { addressList } from "../address";
 import keccak256 from "keccak256";
 import MerkleTree from "merkletreejs";
 
-
 export default function Home() {
 
   //COUNTDOWN 
