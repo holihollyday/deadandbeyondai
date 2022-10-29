@@ -1288,10 +1288,8 @@
   dependencies:
     "@ethersproject/logger" "^5.7.0"
 
-"@ethersproject/providers@5.7.1":
-  "integrity" "sha512-vZveG/DLyo+wk4Ga1yx6jSEHrLPgmTt+dFv0dv8URpVCRf0jVhalps1jq/emN/oXnMRsC7cQgAF32DcXLL7BPQ=="
-  "resolved" "https://registry.npmjs.org/@ethersproject/providers/-/providers-5.7.1.tgz"
-  "version" "5.7.1"
+"@ethersproject/providers@5.7.2":
+  "version" "5.7.2"
   dependencies:
     "@ethersproject/abstract-provider" "^5.7.0"
     "@ethersproject/abstract-signer" "^5.7.0"
@@ -2389,13 +2387,12 @@
   "resolved" "https://registry.npmjs.org/@ungap/promise-all-settled/-/promise-all-settled-1.1.2.tgz"
   "version" "1.1.2"
 
-"@wagmi/core@0.5.8":
-  "integrity" "sha512-1mABf1bXyn3AOHyQkios4FTGqoARa8y1tf7GMH6t1c7q0nAMSbpXoTDdjEidUHy8qhWoG0y3Ez4PjCi8WQnmMg=="
-  "resolved" "https://registry.npmjs.org/@wagmi/core/-/core-0.5.8.tgz"
-  "version" "0.5.8"
+"@wagmi/core@0.6.6":
+  "version" "0.6.6"
   dependencies:
+    "abitype" "^0.1.7"
     "eventemitter3" "^4.0.7"
-    "zustand" "^4.0.0"
+    "zustand" "^4.1.1"
 
 "@walletconnect/browser-utils@^1.8.0":
   "integrity" "sha512-Wcqqx+wjxIo9fv6eBUFHPsW1y/bGWWRboni5dfD8PtOmrihrEpOCmvRJe4rfl7xgJW8Ea9UqKEaq0bIRLHlK4A=="
@@ -2610,40 +2607,39 @@
   dependencies:
     "@walletconnect/window-getters" "^1.0.0"
 
-"@web3modal/core@2.0.0-alpha.7":
-  "integrity" "sha512-FPHYSxk0zcOdiILxwuqxE5I1/NigLeOMRe/SocCtglN/m1TsfNpVcOqV6oGrq3c18dzSyojF72EGi/MRLNLHFA=="
-  "resolved" "https://registry.npmjs.org/@web3modal/core/-/core-2.0.0-alpha.7.tgz"
-  "version" "2.0.0-alpha.7"
+"@web3modal/core@2.0.0-beta.1":
+  "version" "2.0.0-beta.1"
   dependencies:
-    "valtio" "1.7.0"
+    "buffer" "6.0.3"
+    "valtio" "1.7.4"
 
-"@web3modal/ethereum@^2.0.0-alpha.7", "@web3modal/ethereum@2.0.0-alpha.7":
-  "integrity" "sha512-aFja3xTYWg1tfuh9ajpMhIVFbT722DO3PQE9rDE9NN1E1Qv6iQIQMCD0AJ/BxWXDc5P2X3HsZ6KV7jqc9Publg=="
-  "resolved" "https://registry.npmjs.org/@web3modal/ethereum/-/ethereum-2.0.0-alpha.7.tgz"
-  "version" "2.0.0-alpha.7"
+"@web3modal/ethereum@^2.0.0-alpha.7", "@web3modal/ethereum@2.0.0-beta.1":
+  "integrity" "sha512-eE36mTtHRhp21dAJX34Gq5/77xRp202ojtiDeMnDcsVuYPdjbfP0ws74yKQTcrAT5F5KaCZqZUa4IT6MDfdd8w=="
+  "resolved" "https://registry.npmjs.org/@web3modal/ethereum/-/ethereum-2.0.0-beta.1.tgz"
+  "version" "2.0.0-beta.1"
   dependencies:
     "@coinbase/wallet-sdk" "3.5.3"
-    "@wagmi/core" "0.5.8"
+    "@wagmi/core" "0.6.6"
     "@walletconnect/ethereum-provider" "1.8.0"
-    "buffer" "6.0.3"
 
 "@web3modal/react@^2.0.0-alpha.7":
-  "integrity" "sha512-AuOY9zOVfjMZ1RvuE01K4u0xuU319tQEy8jcwiQv4bYLCikNCZSNA1jSHpl1iQFtLmGsP+dprmoNLZXPBqua9g=="
-  "resolved" "https://registry.npmjs.org/@web3modal/react/-/react-2.0.0-alpha.7.tgz"
-  "version" "2.0.0-alpha.7"
+  "integrity" "sha512-bKvOw8B6aO/5Q5m2KCuvYlwR8nxGJVyWeFzSWZoyhE/I9DIoHnxZbsxdOCusNSMZRXvjWUdqOlXWocEl27CYKQ=="
+  "resolved" "https://registry.npmjs.org/@web3modal/react/-/react-2.0.0-beta.1.tgz"
+  "version" "2.0.0-beta.1"
   dependencies:
-    "@web3modal/core" "2.0.0-alpha.7"
-    "@web3modal/ui" "2.0.0-alpha.7"
+    "@web3modal/core" "2.0.0-beta.1"
+    "@web3modal/ui" "2.0.0-beta.1"
 
-"@web3modal/ui@2.0.0-alpha.7":
-  "integrity" "sha512-TGhWGdLL1+PQ5sJNbc2zoYR8dprs+ckaiE9pcq1cXUTg1FrXdAZBPYq4CNvXRhwt7PVn/WWTCQBCekMcPUTwjw=="
-  "resolved" "https://registry.npmjs.org/@web3modal/ui/-/ui-2.0.0-alpha.7.tgz"
-  "version" "2.0.0-alpha.7"
+"@web3modal/ui@2.0.0-beta.1":
+  "version" "2.0.0-beta.1"
   dependencies:
-    "@web3modal/core" "2.0.0-alpha.7"
+    "@web3modal/core" "2.0.0-beta.1"
     "lit" "2.4.0"
     "motion" "10.14.2"
     "qrcode" "1.5.1"
+
+"abitype@^0.1.7":
+  "version" "0.1.7"
 
 "abort-controller@^3.0.0":
   "integrity" "sha512-h8lQ8tacZYnR3vNQTgibj+tODHI5/+l06Au2Pcriv/Gmet0eaj4TwWH41sO9wnHDiQsEj19q0drzdWdeAHtweg=="
@@ -4685,7 +4681,7 @@
     "@scure/bip39" "1.1.0"
 
 "ethereumjs-abi@^0.6.8", "ethereumjs-abi@git+https://github.com/ethereumjs/ethereumjs-abi.git":
-  "resolved" "git+ssh://git@github.com/ethereumjs/ethereumjs-abi.git#ee3994657fa7a427238e6ba92a84d0b529bbcde0"
+  "resolved" "git+ssh://git@github.com/ethereumjs/ethereumjs-abi.git"
   "version" "0.6.8"
   dependencies:
     "bn.js" "^4.11.8"
@@ -4849,10 +4845,10 @@
     "rustbn.js" "~0.2.0"
     "safe-buffer" "^5.1.1"
 
-"ethers@^5.7.1", "ethers@>=5.5.1", "ethers@>=5.7":
-  "integrity" "sha512-5krze4dRLITX7FpU8J4WscXqADiKmyeNlylmmDLbS95DaZpBhDe2YSwRQwKXWNyXcox7a3gBgm/MkGXV1O1S/Q=="
-  "resolved" "https://registry.npmjs.org/ethers/-/ethers-5.7.1.tgz"
-  "version" "5.7.1"
+"ethers@^5.7.2", "ethers@>=5.5.1", "ethers@>=5.7":
+  "integrity" "sha512-wswUsmWo1aOK8rR7DIKiWSw9DbLWe6x98Jrn8wcTflTVvaXhAMaB5zGAXy0GYQEQp9iO1iSHWVyARQm11zUtyg=="
+  "resolved" "https://registry.npmjs.org/ethers/-/ethers-5.7.2.tgz"
+  "version" "5.7.2"
   dependencies:
     "@ethersproject/abi" "5.7.0"
     "@ethersproject/abstract-provider" "5.7.0"
@@ -4872,7 +4868,7 @@
     "@ethersproject/networks" "5.7.1"
     "@ethersproject/pbkdf2" "5.7.0"
     "@ethersproject/properties" "5.7.0"
-    "@ethersproject/providers" "5.7.1"
+    "@ethersproject/providers" "5.7.2"
     "@ethersproject/random" "5.7.0"
     "@ethersproject/rlp" "5.7.0"
     "@ethersproject/sha2" "5.7.0"
@@ -6246,7 +6242,15 @@
     "eth-rpc-errors" "^3.0.0"
     "safe-event-emitter" "^1.0.1"
 
-"json-rpc-engine@^6.1.0", "json-rpc-engine@6.1.0":
+"json-rpc-engine@^6.1.0":
+  "integrity" "sha512-NEdLrtrq1jUZyfjkr9OCz9EzCNhnRyWtt1PAnvnhwy6e8XETS0Dtc+ZNCO2gvuAoKsIn2+vCSowXTYE4CkgnAQ=="
+  "resolved" "https://registry.npmjs.org/json-rpc-engine/-/json-rpc-engine-6.1.0.tgz"
+  "version" "6.1.0"
+  dependencies:
+    "@metamask/safe-event-emitter" "^2.0.0"
+    "eth-rpc-errors" "^4.0.2"
+
+"json-rpc-engine@6.1.0":
   "integrity" "sha512-NEdLrtrq1jUZyfjkr9OCz9EzCNhnRyWtt1PAnvnhwy6e8XETS0Dtc+ZNCO2gvuAoKsIn2+vCSowXTYE4CkgnAQ=="
   "resolved" "https://registry.npmjs.org/json-rpc-engine/-/json-rpc-engine-6.1.0.tgz"
   "version" "6.1.0"
@@ -7925,7 +7929,7 @@
     "shell-quote" "^1.6.1"
     "ws" "^7"
 
-"react-dom@^16.8.6":
+"react-dom@^16.8.6", "react-dom@>= 16.8.0":
   "integrity" "sha512-1gCeQXDLoIqMgqD3IO2Ah9bnf0w9kzhwN5q4FGnHZ67hBm9yePzB5JJAIQCc8x3pFnNlwFq4RidZggNAAkzWWw=="
   "resolved" "https://registry.npmjs.org/react-dom/-/react-dom-16.14.0.tgz"
   "version" "16.14.0"
@@ -7935,7 +7939,7 @@
     "prop-types" "^15.6.2"
     "scheduler" "^0.19.1"
 
-"react-dom@^17.0.2 || ^18.0.0-0", "react-dom@>= 16.8.0", "react-dom@>=16", "react-dom@>=17", "react-dom@18.2.0":
+"react-dom@^17.0.2 || ^18.0.0-0", "react-dom@>=16", "react-dom@>=17", "react-dom@18.2.0":
   "integrity" "sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g=="
   "resolved" "https://registry.npmjs.org/react-dom/-/react-dom-18.2.0.tgz"
   "version" "18.2.0"
@@ -8026,14 +8030,14 @@
     "object-assign" "^4.1.1"
     "react-is" "^16.12.0 || ^17.0.0 || ^18.0.0"
 
-"react@^16.0.0 || ^17.0.0 || ^18.0.0", "react@^16.11.0 || ^17.0.0 || ^18.0.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^17.0.2 || ^18.0.0-0", "react@^18.2.0", "react@>= 16.8.0", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0", "react@>=16", "react@>=16.8", "react@>=17", "react@18.2.0":
+"react@^16.0.0 || ^17.0.0 || ^18.0.0", "react@^16.11.0 || ^17.0.0 || ^18.0.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^17.0.2 || ^18.0.0-0", "react@^18.2.0", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0", "react@>=16", "react@>=16.8", "react@>=17", "react@18.2.0":
   "integrity" "sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ=="
   "resolved" "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
   "version" "18.2.0"
   dependencies:
     "loose-envify" "^1.1.0"
 
-"react@^16.14.0", "react@^16.8.6":
+"react@^16.14.0", "react@^16.8.6", "react@>= 16.8.0":
   "integrity" "sha512-0X2CImDkJGApiAlcf0ODKIneSwBPhqJawOa5wCtKbu7ZECrmS26NvtSILynQ66cgkT/RJ4LidJOc3bUESwmU8g=="
   "resolved" "https://registry.npmjs.org/react/-/react-16.14.0.tgz"
   "version" "16.14.0"
@@ -9272,7 +9276,7 @@
   dependencies:
     "is-typedarray" "^1.0.0"
 
-"typescript@*", "typescript@>=2.8.0 || >= 3.2.0-dev || >= 3.3.0-dev || >= 3.4.0-dev || >= 3.5.0-dev || >= 3.6.0-dev || >= 3.6.0-beta || >= 3.7.0-dev || >= 3.7.0-beta", "typescript@>=3.3.1":
+"typescript@*", "typescript@>=2.8.0 || >= 3.2.0-dev || >= 3.3.0-dev || >= 3.4.0-dev || >= 3.5.0-dev || >= 3.6.0-dev || >= 3.6.0-beta || >= 3.7.0-dev || >= 3.7.0-beta", "typescript@>=3.3.1", "typescript@>=4.7.4":
   "integrity" "sha512-QCh+85mCy+h0IGff8r5XWzOVSbBO+KfeYrMQh7NJ58QujwcE22u+NUSmUxqF+un70P9GXKxa2HCNiTTMJknyjQ=="
   "resolved" "https://registry.npmjs.org/typescript/-/typescript-4.8.4.tgz"
   "version" "4.8.4"
@@ -9426,10 +9430,8 @@
   "resolved" "https://registry.npmjs.org/uuid/-/uuid-8.3.2.tgz"
   "version" "8.3.2"
 
-"valtio@1.7.0":
-  "integrity" "sha512-3Tnix66EERwMcrl1rfB3ylcewOcL5L/GiPmC3FlVNreQzqf2jufEeqlNmgnLgSGchkEmH3WYVtS+x6Qw4r+yzQ=="
-  "resolved" "https://registry.npmjs.org/valtio/-/valtio-1.7.0.tgz"
-  "version" "1.7.0"
+"valtio@1.7.4":
+  "version" "1.7.4"
   dependencies:
     "proxy-compare" "2.3.0"
     "use-sync-external-store" "1.2.0"
@@ -9832,9 +9834,7 @@
   "resolved" "https://registry.npmjs.org/yocto-queue/-/yocto-queue-0.1.0.tgz"
   "version" "0.1.0"
 
-"zustand@^4.0.0":
-  "integrity" "sha512-gcRaKchcxFPbImrBb/BKgujOhHhik9YhVpIeP87ETT7uokEe2Szu7KkuZ9ghjtD+/KKkcrRNktR2AiLXPIbKIQ=="
-  "resolved" "https://registry.npmjs.org/zustand/-/zustand-4.1.2.tgz"
-  "version" "4.1.2"
+"zustand@^4.1.1":
+  "version" "4.1.3"
   dependencies:
     "use-sync-external-store" "1.2.0"
