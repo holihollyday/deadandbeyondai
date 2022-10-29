@@ -107,20 +107,18 @@ export default function Home() {
     try {
 
       console.log("Checking... Who is this human?")
-
+      getData();
       const signer = await getProviderOrSigner(true);
       const nftContract = new Contract(NFT_CONTRACT_ADDRESS, abi, signer);
    
         //get address
-        const signerAddress = await signer.getAddress();
+        // const signerAddress = await signer.getAddress();
         //console.log("providerAddress:", signerAddress, typeof signerAddress);
 
-        const isValid = await nftContract.verifySignerAddress(messageHash,signature);
-
-        // const isValid = merkleTree.verify(data.allowlist.messageHash, data.allowlist.signature);
-        setisValid(isValid);
-
+      const isValid = await nftContract.verifySignerAddress(messageHash,signature);
+      setisValid(isValid);
       console.log("Is this human on the allowlist? --", isValid);
+      
       return isValid;
 
     }
@@ -272,7 +270,6 @@ const publicMint = async () => {
     const provider = await getProviderOrSigner();
     const nftContract = new Contract(NFT_CONTRACT_ADDRESS, abi, provider);
     const _tokenIds = await nftContract.totalSupply();
-    //_tokenIds is a `Big Number`. We need to convert the Big Number to a string
     setTokenIdsMinted(_tokenIds.toString());
     // console.log(_tokenIds);
   } catch (err) {
@@ -282,7 +279,7 @@ const publicMint = async () => {
 
   useEffect(() =>{
     const target = new Date("11/1/2022 23:00:00");
-    const interval = setInterval(() => {
+     const interval = setInterval(() => {
       const now = new Date();
       const difference = target.getTime() - now.getTime();
       const d = Math.floor(difference / (1000 * 60 * 60 * 24));
@@ -316,11 +313,9 @@ const publicMint = async () => {
       }
       getTokenIdsMinted();
       checkifSoldOut();
-      getData();
-
+      checkifValid();  
    
-        checkifClaimed();
-        // checkifValid();   
+      checkifClaimed(); 
 
       // set an interval to get the number of token Ids minted every 3 seconds
         setInterval(async function () {
