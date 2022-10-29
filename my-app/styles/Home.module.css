@@ -176,8 +176,8 @@
   position: absolute;
   width: 460px;
   height: 150px;
-  animation: fadeIn 30s;
-  animation-iteration-count: infinite; 
+  /* animation: fadeIn 30s;
+  animation-iteration-count: infinite;  */
 }
 
 .spanish{

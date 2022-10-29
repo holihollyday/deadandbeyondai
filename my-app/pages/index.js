@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { useEffect, useState} from 'react';
+import {use, useEffect, useState} from 'react';
 import Popup from 'reactjs-popup';
 import styles from '../styles/Home.module.css'
 
@@ -32,11 +32,13 @@ export default function Home() {
   const [merkleTree, setMerkleTree] = useState(null);
   const [rootHash, setrootHash] = useState(null);
   const [merkleProof, setmerkleProof] = useState("");
+  const [messageHash, setHash] = useState(null); 
+  const [signature, setSignature] = useState(null); 
   //CHECK IF VALID/CLAIMED
   const [isValid, setisValid] = useState(false);
   const [isClaimed, setisClaimed] = useState(false);
 
-
+  const api ="https://launchpad.heymint.xyz/api/embed?projectId=53&chain=ETH_GOERLI&address=0xF546F5aE11913d66A0669aAA7C237AC9ADA76e0C";
    /**
    * checkifValid: Check if presale has started
    */
@@ -79,6 +81,45 @@ export default function Home() {
     }
   };
 
+
+  const getData = async () => {
+    try {
+      console.log("Checking... Who is this human?")
+
+      const signer = await getProviderOrSigner(true);
+      //get address
+      const signerAddress = await signer.getAddress();
+    
+        fetch("https://launchpad.heymint.xyz/api/embed?projectId=53&chain=ETH_GOERLI&address="+signerAddress)
+        .then((response) => response.json())
+        .then(data => {
+          const messageHash = data.allowlist.messageHash;
+          const signature = data.allowlist.signature;
+          setHash(messageHash);
+          setSignature(signature);
+          console.log(messageHash, signature);
+        }
+      )
+        .catch(error => console.log('ERROR'));
+        // .then((response) => response.json())
+        // .then((data) => data.allowlist.messageHash, data.allowlist.signature);
+
+        // const res = await fetch("https://launchpad.heymint.xyz/api/embed?projectId=53&chain=ETH_GOERLI&address="+signerAddress);
+        // console.log(res.json().allowlist.messageHash);
+        // const messageHash = res.json().allowlist.messageHash;
+        // const signature = res.allowlist.signature;
+
+
+        
+        return messageHash, signature;
+        
+
+    }
+    catch (err) {
+      console.error(err);
+    }
+  };
+
   /**
    * checkifValid: Check if the address is valid for presale
    */
@@ -113,12 +154,12 @@ export default function Home() {
 
 
         const isValid = await nftContract.verifySignerAddress(messageHash,signature);
-        
-        // const isValid = merkleTree.verify(merkleProof, claimingAddress, rootHash);
+
+        // const isValid = merkleTree.verify(data.allowlist.messageHash, data.allowlist.signature);
         setisValid(isValid);
 
       console.log("Is this human on the allowlist? --", isValid);
-      return isValid, merkleProof;
+      return isValid;
 
     }
     catch (err) {
@@ -181,7 +222,7 @@ const presaleMint = async () => {
     const nftContract = new Contract(NFT_CONTRACT_ADDRESS, abi, signer);
  
     // call the presale from the contract and pass true to it
-    const tx = await nftContract.presaleMint(merkleProof, {
+    const tx = await nftContract.presaleMint(messageHash, signature, 1,1, {
       value: utils.parseEther("0.01"),
     });
     _safeMint(msg.sender, tokenIds);
@@ -313,10 +354,11 @@ const publicMint = async () => {
       }
       getTokenIdsMinted();
       checkifSoldOut();
+      getData();
 
    
         checkifClaimed();
-        checkifValid();   
+        // checkifValid();   
 
       // set an interval to get the number of token Ids minted every 3 seconds
         setInterval(async function () {
@@ -344,13 +386,13 @@ const publicMint = async () => {
             We want to get the images back from the dead.
             </p>
           </div>
-
+{/* 
           <div className={styles.spanish}>
             <p>
             El lanzamiento del Día de los Muertos, con la colección de Dead and Beyond IA honoramos a las mascotas perdidas que nos han dejado a lo largo de los años. <br></br><br></br>
             El arte se genero con IA y nosotros los vivos tomamos el control del sistema para reencontrarnos con nuestras mascotas.
             </p>
-          </div>
+          </div> */}
 
           <div className={styles.intro_mobile}>
             <p>
@@ -453,7 +495,7 @@ const publicMint = async () => {
         } 
   
         //If presale started, hasn't ended yet
-        if (presaleStarted && !presaleEnded && !isClaimed && isValid) {
+        if (presaleStarted && !presaleEnded && !isClaimed) {
           return (
           <div>
             <button className ={styles.socialmediaBtn} type="button"> 
@@ -561,6 +603,7 @@ const publicMint = async () => {
               data-project-id="53"
               data-chain="ETH_GOERLI"
               ></script>
+          
       </Head>
 
       <div className={styles.content}>
@@ -574,13 +617,13 @@ const publicMint = async () => {
                       <img className = {styles.socialmediaBottom}  src="./ele/twitter_litup.png"  alt="twitter-logo" />
                   </a>  
               </button>
-              {/* <button className ={styles.socialmediaBtn} type="button"> 
-                  <a href="https://opensea.io/collection/deadandbeyondai/" target="_blank" rel="noreferrer">
+              <button className ={styles.socialmediaBtn} type="button"> 
+                  <a href="https://discord.gg/6FfsrFEJW9" target="_blank" rel="noreferrer">
                       <img className = {styles.socialmediaTop}  src="./ele/Discord.png"  alt="discord-logo" />
                       <img className = {styles.socialmediaBottom}  src="./ele/Discord_litup.png"  alt="discord-logo" />
                   </a>  
               </button>
-              <button className ={styles.socialmediaBtn} type="button"> 
+              {/* <button className ={styles.socialmediaBtn} type="button"> 
                   <a href="https://opensea.io/collection/deadandbeyondai/" target="_blank" rel="noreferrer">
                       <img className = {styles.socialmediaTop}  src="./ele/etherscan.png"  alt="etherscan-logo" />
                       <img className = {styles.socialmediaBottom}  src="./ele/etherscan_litup.png"  alt="etherscan-logo" />
@@ -624,8 +667,9 @@ const publicMint = async () => {
           <div className={styles.mintBtn}>
              {/* {renderButton()} */}
              <button className ={styles.socialmediaBtn} type="button"> 
-                  <a href="https://twitter.com/deadandbeyond/" target="_blank" rel="noreferrer">
-                      <img className = {styles.socialmediaTop}  src="./ele/NotYet.png"  alt="logo" />
+                  <a href="https://heymint.xyz/dead-and-beyond-ai" target="_blank" rel="noreferrer">
+                      <img className = {styles.socialmediaTop}  src="./ele/Join.png"  alt="logo" />
+                      <img className = {styles.socialmediaBottom}  src="./ele/Join_litup.png"  alt="logo" />
                   </a>  
               </button>
           </div>
